@@ -38,7 +38,7 @@ if status == 0:
             row = line.split('\t')
             row.append(get_readability_level(float(row[-1])))
             output.append(row)
-            log.info(row)
+            print(', '.join(row))
         except:
             log.error("CoRed parsing error")
 else:
