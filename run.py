@@ -17,7 +17,7 @@ def get_readability_level(readability_score):
 
 # list java source files
 rootdir = sys.argv[1]
-verbose_mode = True if sys.argv[2] == '--verbose' else False
+verbose_mode = True if len(sys.argv) > 2 and sys.argv[2] == '--verbose' else False
 
 java_files = list()
 for subdir, dirs, files in os.walk(rootdir):
