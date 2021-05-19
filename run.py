@@ -38,7 +38,7 @@ if status == 0:
         try:
             row = line.split('\t')
             # add readability level
-            row.append(get_readability_level(float(row[-1]))). 
+            row.append(get_readability_level(float(row[-1]))) 
             # if not verbose_mode, reports only low readability
             if not verbose_mode and row[-1] != "LOW":
                 continue
