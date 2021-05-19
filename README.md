@@ -11,3 +11,9 @@ The readability level thresholds are defined on the basis of the evaluation perf
 python3 run.py <java project dir>
 ```
 The output will be the csv file `report.csv` where for each file there is the readability score and readability level.
+By default, CoRed reports only java files with low readability level.
+
+To log all readability levels:
+```
+python3 run.py <java project dir> --verbose
+```
