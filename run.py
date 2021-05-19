@@ -17,6 +17,7 @@ def get_readability_level(readability_score):
 
 # list java source files
 rootdir = sys.argv[1]
+verbose_mode = True if sys.argv[2] == '--verbose' else False
 
 java_files = list()
 for subdir, dirs, files in os.walk(rootdir):
@@ -36,7 +37,11 @@ if status == 0:
     for line in process_out:
         try:
             row = line.split('\t')
-            row.append(get_readability_level(float(row[-1])))
+            # add readability level
+            row.append(get_readability_level(float(row[-1]))). 
+            # if not verbose_mode, reports only low readability
+            if not verbose_mode and row[-1] != "LOW":
+                continue
             output.append(row)
             print(', '.join(row))
         except:
@@ -47,4 +52,6 @@ else:
 with open("report.csv", 'w') as out:
     out.write("file_name,score,level\n")
     for row in output:
-        out.write(",".join(row) + "\n")
+        # check if readability level is not null
+        if row[-1]:
+            out.write(",".join(row) + "\n")
